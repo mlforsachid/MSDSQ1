@@ -1,8 +1,8 @@
 ---
 title: "Data-607 Week-1 Assignment"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 ##---------------------------------------------------------------------------
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 **Make sure to set header=F since data file don't have column names**
 
 ```{r Read File}
-Mushroom.Data = read.csv("agaricus-lepiota.csv", header=F, stringsAsFactors=FALSE)
+Mushroom.Data = read.csv("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week1/agaricus-lepiota.csv", header=F, stringsAsFactors=FALSE)
 ```
 
 ### 2] Assign column names
