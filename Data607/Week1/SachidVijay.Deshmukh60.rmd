@@ -1,0 +1,85 @@
+---
+title: "Data-607 Week-1 Assignment"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 08/28/2018
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1] Read Mushroom data from csv file
+
+**Make sure to set header=F since data file don't have column names**
+
+```{r Read File}
+Mushroom.Data = read.csv("agaricus-lepiota.csv", header=F, stringsAsFactors=FALSE)
+```
+
+### 2] Assign column names
+
+**We can use names function to assign column names**
+**First column is the class label. Let's call it Edibility**
+
+```{r Assign Columns}
+names(Mushroom.Data) = c("Edibility", "CapShape", "CapSurface", "CapColor", "Bruises", "Odor", "GrillAttachment", "GrillSpacing", "GrillSize", "GrillColor", "StalkShape", "StalkRoot","StalkSurfaceAboveRing","StalkSurfaceBelowRing", "StalkColorAboveRing", "StalkColorBelowRing", "VeilType", "VeilColor", "RingNumber", "RingType", "SporeSprintColor", "Population", "Habitat")
+```
+
+### 3] Check Mushroom dataframe dimension. Rows and Columns
+
+```{r check dimensions}
+dim(Mushroom.Data)
+```
+**Mushroom dataframe has 8124 rows and 23 columns**
+
+### 4] Check Edibility proportion
+
+```{r check Edibility Proportion}
+table(Mushroom.Data$Edibility)
+```
+**Out of 8124 samples 4208 samples are edible and 3916 samples are poisonous**
+
+### 5] Subset columns
+**Let's take first four attribute along with Edibility class variable
+
+```{r Subset Columns}
+Mushroon.Sub = subset(Mushroom.Data, select=c("Edibility", "CapShape", "CapSurface", "CapColor", "Bruises"))
+```
+
+### 6] Check dimensions of a subset dataframe
+
+```{r Check Subset Dimensions}
+dim(Mushroon.Sub)
+```
+**Subset has 8124 rows and 5 columns. First column is a class variable whihc is Edibility**
+
+### 7] Preview first 10 rows of subset
+
+```{r Preview Subset First}
+head(Mushroon.Sub,10)
+```
+### 8] Preview last 10 rows of subset
+
+```{r Preview Subset Last}
+tail(Mushroon.Sub,10)
+```
+
+### 9] Replace abbreviations
+**Replace e with Edible and p with Poisonous in class variable**
+
+```{r Replace Abbreviations}
+Mushroon.Sub$Edibility[Mushroon.Sub$Edibility=="e"] = "Edible"
+Mushroon.Sub$Edibility[Mushroon.Sub$Edibility=="p"] = "Poisonous"
+```
+### 10] Check unique values of Class variable Edibility
+
+```{r Validate Abbreviations}
+unique(Mushroon.Sub$Edibility)
+```
+**We cas see that abbreaviatoins are successfully replaced**
