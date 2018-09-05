@@ -1,0 +1,64 @@
+---
+title: "Data-607 Week-2 Assignment"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 09/05/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week1/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for SQL script](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week1/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week1/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607-Week2Assignment)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#### Following are the pre-requisites for running this script
+* Local installation of MySQL Server
+* Local installation of MySQL Workbench
+* MovieRatings.sql: Git Hub url is provided in the header section above
+* R Packages RMySQL, htmlTable
+
+#### Take following steps to execute the R script
+* Download MovieRatings.sql file and run it against active schema on your MySQL server
+* Make sure MovieRatings.sql script is executed successfully
+* Open R mark up script in R Studio
+* Change variables login.user, login.password and db.name variables to match your envronment
+* Execute R mark up script
+
+```{r reference library}
+library(RMySQL)
+library(htmlTable)
+```
+
+### 1] Configurable variables. Make sure to change the variables to match your environment
+
+```{r declare variables}
+login.user = 'sachid'
+login.password = 'DatabasePassword@1'
+db.name = 'moviecatalogue'
+
+mydb = dbConnect(MySQL(), user= login.user, password=login.password, dbname=db.name)
+```
+
+### 2] Read Movie Ratings data into R Data Frame
+```{r load data frame}
+Movie.Ratings <- dbGetQuery(mydb, "select moviename, username, userrating from users join userratings 
+                  on users.userid = userratings.userid join movies on userratings.movieid= movies.movieid order by movies.moviename")
+```
+
+### 3] Display movie ratings in  data frame. Displayed in matrix format
+```{r display data frame matrix}
+x = matrix(Movie.Ratings$userrating,ncol=5,byrow=T, dimnames = list(unique(Movie.Ratings$moviename), unique(Movie.Ratings$username)))
+htmlTable(x, caption="Most populer movie ratings")
+```
+
+### 4] Display movie ratings in  data frame.
+```{r display data frame}
+htmlTable(Movie.Ratings, caption="Most populer movie ratings",rnames=F)
+```
