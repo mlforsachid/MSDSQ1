@@ -1,16 +1,16 @@
 ---
 title: "Data-607 Week-2 Assignment"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 09/05/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week1/SachidVijay.Deshmukh60.rmd)
-* > [GitHub Location for SQL script](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week1/SachidVijay.Deshmukh60.rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week1/SachidVijay.Deshmukh60.pdf)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week2/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for SQL script](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week2/MovieRatings.sql)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week2/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data607-Week2Assignment)
 
 ##---------------------------------------------------------------------------
