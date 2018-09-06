@@ -1,16 +1,17 @@
 ---
 title: "Introduction to data"
 output:
+  pdf_document: default
   html_document:
-    theme: cerulean
-    highlight: pygments
     css: ./lab.css
+    highlight: pygments
+    theme: cerulean
 ---
 
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 09/06/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week1/Lab0/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week2/Lab1/SachidVijay.Deshmukh60.Rmd)
 * > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week1/Lab0/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data606Lab1)
 
