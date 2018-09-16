@@ -1,0 +1,95 @@
+---
+title: "Data-607 Week-3 Assignment"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 09/16/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week2/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for SQL script](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week2/MovieRatings.sql)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week2/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607Week3Assignment)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r library initialization}
+library(stringr)
+```
+#### Question 3: Copy the introductory example. The vector name stores the extracted names.
+
+
+```{r name vector}
+raw.data <-"555-1239Moe Szyslak(636) 555-0113Burns, C. Montgomery555-6542Rev. Timothy Lovejoy555 8904Ned Flanders636-555-3226Simpson, Homer5553642Dr. Julius Hibbert"
+
+name = unlist(str_extract_all(raw.data, "[[:alpha:] .,]{2,}"))
+name
+```
+
+# * (a)
+```{r first name, last name}
+name.clean = str_replace_all(name,",", "")
+name.fl = unlist(str_replace_all(name.clean, "[:alpha:]*[:punct:] ", ""))
+name.fl
+```
+# * (b)
+
+```{r has punct}
+str_detect(name.clean, unlist(str_extract_all(name.clean, "[:alpha:]{2,}[:punct:]")))
+```
+
+# * (c)
+```{r has second name}
+str_detect(name.clean, unlist(str_extract_all(name.clean, "[A-Z][:punct:]{1}")))
+```
+
+#### Question 4: Describe the type of strings that conform to the following regular expression
+
+# * (a) [0-9]+\\$ : This regex match one or more digit follwed by $ sign
+# Example
+```{r extract $ amount}
+str = "The value of this product is 100$"
+amount = unlist(str_extract_all(str, "[0-9]+\\$"))
+amount
+```
+# * (b) \\b[a-z]{1,4}\\b : This regex match any word in lower case whihc is 1 to 4 chars long
+# Example
+```{r extract bat}
+str = "This is my batbinton bat"
+bat = unlist(str_extract_all(str, "\\b[a-z]{1,4}\\b"))
+bat
+```
+# * (c) .*?\\.txt$ : This regex match any word endting wiht .txt
+# Example
+```{r .txt}
+files = c("Program.R", "Program.cpp", "Program.txt")
+txt = unlist(str_extract_all(files, ".*?\\.txt$"))
+txt
+```
+# * (d) \\d{2}/\\d{2}/\\d{4} : This regex match date pattern mm/dd/yyyy
+# Example
+```{r Date Example}
+str = "Today's date is 09/16/2018"
+date = unlist(str_extract_all(str,"\\d{2}/\\d{2}/\\d{4}" ))
+date
+```
+
+# * (e) <(.+?)>.+?</\\1> : This regex matches any word wrapped inside <> and </> HTML tags
+# Example
+```{r html extract}
+str = "To print in bold write <b>Bold</b> in Html"
+html = unlist(str_extract_all(str, "<(.+?)>.+?</\\1>"))
+html
+```
+#### Question 9 : Secret Message
+```{r secret message}
+sm =  "clcopCow1zmstc0d87wnkig7OvdicpNuggvhryn92Gjuwczi8hqrfpRxs5Aj5dwpn0TanwoUwisdij7Lj8kpf03AT5Idr3coc0bt7yczjatOaootj55t3Nj3ne6c4Sfek.r1w1YwwojigOd6vrfUrbz2.2bkAnbhzgv4R9i05zEcrop.wAgnb.SqoU65fPa1otfb7wEm24k6t3sR9zqe5fy89n6Nd5t9kc4fE905gmc4Rgxo5nhDk!gr"
+decoded <- unlist(str_extract_all(sm, "[[:upper:].]{1,}"))
+decoded <- str_replace_all(paste(decoded, collapse = ''), "[.]", " "); decoded
+````
