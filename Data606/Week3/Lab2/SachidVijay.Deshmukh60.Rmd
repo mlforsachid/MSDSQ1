@@ -2,9 +2,10 @@
 title: "Probability"
 output:
   html_document:
-    theme: cerulean
-    highlight: pygments
     css: ./lab.css
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
 ---
 
 ##---------------------------------------------------------------------------
