@@ -1,0 +1,149 @@
+---
+title: 'Data 606: Chapter-2 Homework'
+output:
+  pdf_document: default
+  html_document:
+    css: ./lab.css
+    highlight: pygments
+    theme: cerulean
+---
+
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 09/19/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week2/Homework1/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week2/Homework1/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data606Chapter2Homework)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r lib init}
+library(ggplot2)
+library(VennDiagram)
+```
+1.  > 2.6 Dice rolls.
+* Prob of getting sum of 1 is 0
+* Prob of getting sum of 5 = 4/36
+* Prob of getting sum of 12  = 1/36
+
+2.  > 2.8 Poverty and language
+* Living below poverty line and speaking a foreign language are not disjoint since there are 4.2% people who falls under both the categories
+* 
+```{r venn diagram}
+bp  =  14.6
+fl = 20.7
+common = 4.2
+
+diag <- draw.pairwise.venn(bp, fl, common, c("BP", "FL"))
+grid.draw(diag)
+```
+
+* 10.4% of Americans only live below poverty line and only speaks english at home
+* 31.1% Americans live below the poverty line or speak a foreign language at home
+* 68.9% Americans live above the poverty line and only speaks english at home
+* Since 4.2% population is common in below Americans living below poverty line and Americans speaking foreign language, these two events are not completely independent
+
+3.  > 2.20 Assortative Mating
+
+* P(MB U FB) = P(MB) + P(FB) - P(CommonB)
+
+```{r prob Blue}
+(114/204 + 108/204) - 78/204
+```
+
+* P(FB | MB) = P(MB AND FB)/P(MB)
+
+```r{prob male blue}
+(78/204)/ (114/204)
+```
+
+* P(FB | MBR) = P(FB AND MBR)/P(MBR)
+
+```{r prob female blue}
+(19/204)/(54/204)
+```
+
+* P(FB | MG) = P(FB AND MG)/P(MG)
+
+```{r prob female blue MG}
+(11/204)/(36/204)
+```
+
+* If eyecolors of partners are independent then following equation would be true P(MB ??? FB) = P(MB) * P(FB). 78/204 is not equal to (114/204) * (108/204). We can conclude that eyecolors of parters are not independent
+
+4. > 2.30 Books on bookshelf
+
+* 
+```{r paperback}
+(28/95) * (59/94)
+```
+
+*
+```{r Fiction}
+(72/95) * (28/94)
+```
+
+*
+```{r WithReplacement}
+(72/95) * (28/95)
+```
+
+* Since we are taking out only one book out of 95 total books, overall probability will not change drastically if we select random book with replacement or without replacement for scenario b and c.
+
+5. > 2.38 Baggage Fees
+
+*
+```{r AvgRev}
+ (0 * 0.54) + (0.34 * 25) + (0.12 * 60)
+```
+
+*
+```{r SD}
+ sqrt(0.54*(0-15.7)^2 + 0.34*(25-15.7)^2 + 0.12*(60-15.7)^2)
+```
+
+* Avg Revenue per passanger is $15.7. For 120 pasanger expected revenue is 
+```{r Exp Rev}
+15.7*120
+```
+
+* Sample SD = 19.95. According to central limit theorum population SD = Sample SD * SQRT(n)
+```{r Expected SD}
+19.95 * sqrt(120)
+```
+
+6. > 2.44 Income and Gender
+
+*
+```{r dist}
+inc = c("$1 to $9,999 or loss", 
+            "$10,000 to $14,999", 
+            "$15,000 to $24,999",
+            "$25,000 to $34,999",
+            "$35,000 to $49,999",
+            "$50,000 to $64,000",
+            "$65,000 to $74,999",
+            "$75,000 to $99,999",
+            "$100,000 or more")
+tot = c(.022, .047, .158, .183, .212, .139, .058, .084, 0.097)
+inc_gender <- data.frame(inc, tot)
+
+ggplot(inc_gender, aes(inc, tot)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Distribution is normal
+
+*
+```{r less than 50}
+sum(tot[1:5])
+```
+
+* Assuming gender and income less than 50K per year are independent
+```{r less than 50 and female}
+sum(tot[1:5])*0.41
+```
+
+* Probability of any person making less than 50K an year is 0.62. However for female that probability is 0.71. This significant difference in probability indicates that those are dependent event. Probability of a person making less than 50K an year is gender dependent
