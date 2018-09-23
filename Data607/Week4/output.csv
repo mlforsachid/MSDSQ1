@@ -1,65 +1,66 @@
 "PalyerName","PlayerState","TotPts","PlayerPreRanking","AvgRating"
-"GARY HUA","ON","6.0","1794",1605.3
-"DAKSHESH DARURI","MI","6.0","1553",1469.3
-"ADITYA BAJAJ","MI","6.0","1384",1563.6
-"PATRICK H SCHILLING","MI","5.5","1716",1573.6
-"HANSHI ZUO","MI","5.5","1655",1500.9
-"HANSEN SONG","OH","5.0","1686",1518.7
-"GARY DEE SWATHELL","MI","5.0","1649",1372.1
-"EZEKIEL HOUGHTON","MI","5.0","1641",1468.4
-"STEFANO LEE","ON","5.0","1411",1523.1
-"ANVIT RAO","MI","5.0","1365",1554.1
-"CAMERON WILLIAM MC LEMAN","MI","4.5","1712",1467.6
-"KENNETH J TACK","MI","4.5","1663",1506.2
-"TORRANCE HENRY JR","MI","4.5","1666",1497.9
-"BRADLEY SHAW","MI","4.5","1610",1515
-"ZACHARY JAMES HOUGHTON","MI","4.5","1220",1483.9
-"MIKE NIKITIN","MI","4.0","1604",1385.8
-"RONALD GRZEGORCZYK","MI","4.0","1629",1498.6
-"DAVID SUNDEEN","MI","4.0","1600",1480
-"DIPANKAR ROY","MI","4.0","1564",1426.3
-"JASON ZHENG","MI","4.0","1595",1410.9
-"DINH DANG BUI","ON","4.0","1563",1470.4
-"EUGENE L MCCLURE","MI","4.0","1555",1300.3
-"ALAN BUI","ON","4.0","1363",1213.9
-"MICHAEL R ALDRICH","MI","4.0","1229",1357
-"LOREN SCHWIEBERT","MI","3.5","1745",1363.3
-"MAX ZHU","ON","3.5","1579",1506.9
-"GAURAV GIDWANI","MI","3.5","1552",1221.7
-"SOFIA ADINA STANESCU-BELLU","MI","3.5","1507",1522.1
-"CHIEDOZIE OKORIE","MI","3.5","1602",1313.5
-"GEORGE AVERY JONES","ON","3.5","1522",1144.1
-"RISHI SHETTY","MI","3.5","1494",1259.9
-"JOSHUA PHILIP MATHEWS","ON","3.5","1441",1378.7
-"JADE GE","MI","3.5","1449",1276.9
-"MICHAEL JEFFERY THOMAS","MI","3.5","1399",1375.3
-"JOSHUA DAVID LEE","MI","3.5","1438",1149.7
-"SIDDHARTH JHA","MI","3.5","1355",1388.2
-"AMIYATOSH PWNANANDAM","MI","3.5","980",1384.8
-"BRIAN LIU","MI","3.0","1423",1539.2
-"JOEL R HENDON","MI","3.0","1436",1429.6
-"FOREST ZHANG","MI","3.0","1348",1390.6
-"KYLE WILLIAM MURPHY","MI","3.0","1403",1248.5
-"JARED GE","MI","3.0","1332",1149.9
-"ROBERT GLEN VASEY","MI","3.0","1283",1106.6
-"JUSTIN D SCHILLING","MI","3.0","1199",1327
-"DEREK YAN","MI","3.0","1242",1152
-"JACOB ALEXANDER LAVALLEY","MI","3.0","377",1357.7
-"ERIC WRIGHT","MI","2.5","1362",1392
-"DANIEL KHAIN","MI","2.5","1382",1355.8
-"MICHAEL J MARTIN","MI","2.5","1291",1285.8
-"SHIVAM JHA","MI","2.5","1056",1296
-"TEJAS AYYAGARI","MI","2.5","1011",1356.1
-"ETHAN GUO","MI","2.5","935",1494.6
-"JOSE C YBARRA","MI","2.0","1393",1345.3
-"LARRY HODGE","MI","2.0","1270",1206.2
-"ALEX KONG","MI","2.0","1186",1406
-"MARISA RICCI","MI","2.0","1153",1414.4
-"MICHAEL LU","MI","2.0","1092",1363
-"VIRAJ MOHILE","MI","2.0","917",1391
-"SEAN M MC CORMICK","MI","2.0","853",1319
-"JULIA SHEN","MI","1.5","967",1330.2
-"JEZZEL FARKAS","ON","1.5","955",1327.3
-"ASHWIN BALAJI","MI","1.0","1530",1186
-"THOMAS JOSEPH HOSMER","MI","1.0","1175",1350.2
-"BEN LI","MI","1.0","1163",1263
+"Player Name","<td id=LC3 class=blob-code blob-code-inner js-file-line> Num","Total",NA,NA
+"GARY HUA","<td id=LC6 class=blob-code blob-code-inner js-file-line>   ON","6.0","1794",NA
+"DAKSHESH DARURI","<td id=LC9 class=blob-code blob-code-inner js-file-line>   MI","6.0","1553",NA
+"ADITYA BAJAJ","<td id=LC12 class=blob-code blob-code-inner js-file-line>   MI","6.0","1384",NA
+"PATRICK H SCHILLING","<td id=LC15 class=blob-code blob-code-inner js-file-line>   MI","5.5","1716",NA
+"HANSHI ZUO","<td id=LC18 class=blob-code blob-code-inner js-file-line>   MI","5.5","1655",NA
+"HANSEN SONG","<td id=LC21 class=blob-code blob-code-inner js-file-line>   OH","5.0","1686",NA
+"GARY DEE SWATHELL","<td id=LC24 class=blob-code blob-code-inner js-file-line>   MI","5.0","1649",NA
+"EZEKIEL HOUGHTON","<td id=LC27 class=blob-code blob-code-inner js-file-line>   MI","5.0","1641",NA
+"STEFANO LEE","<td id=LC30 class=blob-code blob-code-inner js-file-line>   ON","5.0","1411",NA
+"ANVIT RAO","<td id=LC33 class=blob-code blob-code-inner js-file-line>   MI","5.0","1365",NA
+"CAMERON WILLIAM MC LEMAN","<td id=LC36 class=blob-code blob-code-inner js-file-line>   MI","4.5","1712",NA
+"KENNETH J TACK","<td id=LC39 class=blob-code blob-code-inner js-file-line>   MI","4.5","1663",NA
+"TORRANCE HENRY JR","<td id=LC42 class=blob-code blob-code-inner js-file-line>   MI","4.5","1666",NA
+"BRADLEY SHAW","<td id=LC45 class=blob-code blob-code-inner js-file-line>   MI","4.5","1610",NA
+"ZACHARY JAMES HOUGHTON","<td id=LC48 class=blob-code blob-code-inner js-file-line>   MI","4.5","1220",NA
+"MIKE NIKITIN","<td id=LC51 class=blob-code blob-code-inner js-file-line>   MI","4.0","1604",NA
+"RONALD GRZEGORCZYK","<td id=LC54 class=blob-code blob-code-inner js-file-line>   MI","4.0","1629",NA
+"DAVID SUNDEEN","<td id=LC57 class=blob-code blob-code-inner js-file-line>   MI","4.0","1600",NA
+"DIPANKAR ROY","<td id=LC60 class=blob-code blob-code-inner js-file-line>   MI","4.0","1564",NA
+"JASON ZHENG","<td id=LC63 class=blob-code blob-code-inner js-file-line>   MI","4.0","1595",NA
+"DINH DANG BUI","<td id=LC66 class=blob-code blob-code-inner js-file-line>   ON","4.0","1563",NA
+"EUGENE L MCCLURE","<td id=LC69 class=blob-code blob-code-inner js-file-line>   MI","4.0","1555",NA
+"ALAN BUI","<td id=LC72 class=blob-code blob-code-inner js-file-line>   ON","4.0","1363",NA
+"MICHAEL R ALDRICH","<td id=LC75 class=blob-code blob-code-inner js-file-line>   MI","4.0","1229",NA
+"LOREN SCHWIEBERT","<td id=LC78 class=blob-code blob-code-inner js-file-line>   MI","3.5","1745",NA
+"MAX ZHU","<td id=LC81 class=blob-code blob-code-inner js-file-line>   ON","3.5","1579",NA
+"GAURAV GIDWANI","<td id=LC84 class=blob-code blob-code-inner js-file-line>   MI","3.5","1552",NA
+"SOFIA ADINA STANESCU-BELLU","<td id=LC87 class=blob-code blob-code-inner js-file-line>   MI","3.5","1507",NA
+"CHIEDOZIE OKORIE","<td id=LC90 class=blob-code blob-code-inner js-file-line>   MI","3.5","1602",NA
+"GEORGE AVERY JONES","<td id=LC93 class=blob-code blob-code-inner js-file-line>   ON","3.5","1522",NA
+"RISHI SHETTY","<td id=LC96 class=blob-code blob-code-inner js-file-line>   MI","3.5","1494",NA
+"JOSHUA PHILIP MATHEWS","<td id=LC99 class=blob-code blob-code-inner js-file-line>   ON","3.5","1441",NA
+"JADE GE","<td id=LC102 class=blob-code blob-code-inner js-file-line>   MI","3.5","1449",NA
+"MICHAEL JEFFERY THOMAS","<td id=LC105 class=blob-code blob-code-inner js-file-line>   MI","3.5","1399",NA
+"JOSHUA DAVID LEE","<td id=LC108 class=blob-code blob-code-inner js-file-line>   MI","3.5","1438",NA
+"SIDDHARTH JHA","<td id=LC111 class=blob-code blob-code-inner js-file-line>   MI","3.5","1355",NA
+"AMIYATOSH PWNANANDAM","<td id=LC114 class=blob-code blob-code-inner js-file-line>   MI","3.5","980",NA
+"BRIAN LIU","<td id=LC117 class=blob-code blob-code-inner js-file-line>   MI","3.0","1423",NA
+"JOEL R HENDON","<td id=LC120 class=blob-code blob-code-inner js-file-line>   MI","3.0","1436",NA
+"FOREST ZHANG","<td id=LC123 class=blob-code blob-code-inner js-file-line>   MI","3.0","1348",NA
+"KYLE WILLIAM MURPHY","<td id=LC126 class=blob-code blob-code-inner js-file-line>   MI","3.0","1403",NA
+"JARED GE","<td id=LC129 class=blob-code blob-code-inner js-file-line>   MI","3.0","1332",NA
+"ROBERT GLEN VASEY","<td id=LC132 class=blob-code blob-code-inner js-file-line>   MI","3.0","1283",NA
+"JUSTIN D SCHILLING","<td id=LC135 class=blob-code blob-code-inner js-file-line>   MI","3.0","1199",NA
+"DEREK YAN","<td id=LC138 class=blob-code blob-code-inner js-file-line>   MI","3.0","1242",NA
+"JACOB ALEXANDER LAVALLEY","<td id=LC141 class=blob-code blob-code-inner js-file-line>   MI","3.0","377",NA
+"ERIC WRIGHT","<td id=LC144 class=blob-code blob-code-inner js-file-line>   MI","2.5","1362",NA
+"DANIEL KHAIN","<td id=LC147 class=blob-code blob-code-inner js-file-line>   MI","2.5","1382",NA
+"MICHAEL J MARTIN","<td id=LC150 class=blob-code blob-code-inner js-file-line>   MI","2.5","1291",NA
+"SHIVAM JHA","<td id=LC153 class=blob-code blob-code-inner js-file-line>   MI","2.5","1056",NA
+"TEJAS AYYAGARI","<td id=LC156 class=blob-code blob-code-inner js-file-line>   MI","2.5","1011",NA
+"ETHAN GUO","<td id=LC159 class=blob-code blob-code-inner js-file-line>   MI","2.5","935",NA
+"JOSE C YBARRA","<td id=LC162 class=blob-code blob-code-inner js-file-line>   MI","2.0","1393",NA
+"LARRY HODGE","<td id=LC165 class=blob-code blob-code-inner js-file-line>   MI","2.0","1270",NA
+"ALEX KONG","<td id=LC168 class=blob-code blob-code-inner js-file-line>   MI","2.0","1186",NA
+"MARISA RICCI","<td id=LC171 class=blob-code blob-code-inner js-file-line>   MI","2.0","1153",NA
+"MICHAEL LU","<td id=LC174 class=blob-code blob-code-inner js-file-line>   MI","2.0","1092",NA
+"VIRAJ MOHILE","<td id=LC177 class=blob-code blob-code-inner js-file-line>   MI","2.0","917",NA
+"SEAN M MC CORMICK","<td id=LC180 class=blob-code blob-code-inner js-file-line>   MI","2.0","853",NA
+"JULIA SHEN","<td id=LC183 class=blob-code blob-code-inner js-file-line>   MI","1.5","967",NA
+"JEZZEL FARKAS","<td id=LC186 class=blob-code blob-code-inner js-file-line>   ON","1.5","955",NA
+"ASHWIN BALAJI","<td id=LC189 class=blob-code blob-code-inner js-file-line>   MI","1.0","1530",NA
+"THOMAS JOSEPH HOSMER","<td id=LC192 class=blob-code blob-code-inner js-file-line>   MI","1.0","1175",NA
+"BEN LI","<td id=LC195 class=blob-code blob-code-inner js-file-line>   MI","1.0","1163",NA

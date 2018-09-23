@@ -1,16 +1,19 @@
 ---
 title: "Data-607 Week-4 Project1"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 09/23/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week3/SachidVijay.Deshmukh60.rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week3/SachidVijay.Deshmukh60.pdf)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data607Week4Project1)
+* > [Output file location file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/output.csv)
+
+
 
 ##---------------------------------------------------------------------------
 
@@ -27,7 +30,7 @@ library(stringr)
 ### 2] Read Data
 ```{r Read Data}
 col.names <- c("PairNum", "PalyerName", "TotPts", "Round1", "Round2", "Round3", "Round4", "Round5", "Round6", "Round7", "LastIndex")
-player.data <- read.table("tournamentinfo.txt", header = FALSE, skip = 4, sep = "|", fill = TRUE, stringsAsFactors = FALSE, col.names = col.names)[,1:10]
+player.data <- read.table("https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/tournamentinfo.txt", header = FALSE, skip = 4, sep = "|", fill = TRUE, stringsAsFactors = FALSE, col.names = col.names)[,1:10]
 ```
 
 ### 3] Remove white spaces

@@ -131,13 +131,16 @@ $(document).ready(function () {
 <h3><strong>Date :</strong> 09/23/2018</h3>
 <ul>
 <li><blockquote>
-<p><a href="https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week3/SachidVijay.Deshmukh60.rmd">GitHub Location for rmd file</a></p>
+<p><a href="https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/SachidVijay.Deshmukh60.rmd">GitHub Location for rmd file</a></p>
 </blockquote></li>
 <li><blockquote>
-<p><a href="https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week3/SachidVijay.Deshmukh60.pdf">GitHub Location for pdf file</a></p>
+<p><a href="https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/SachidVijay.Deshmukh60.pdf">GitHub Location for pdf file</a></p>
 </blockquote></li>
 <li><blockquote>
 <p><a href="http://rpubs.com/sachid/Data607Week4Project1">RPubs location of published file</a></p>
+</blockquote></li>
+<li><blockquote>
+<p><a href="https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/output.csv">Output file location file</a></p>
 </blockquote></li>
 </ul>
 </div>
@@ -152,7 +155,9 @@ $(document).ready(function () {
 <div id="read-data" class="section level3">
 <h3>2] Read Data</h3>
 <pre class="r"><code>col.names &lt;- c(&quot;PairNum&quot;, &quot;PalyerName&quot;, &quot;TotPts&quot;, &quot;Round1&quot;, &quot;Round2&quot;, &quot;Round3&quot;, &quot;Round4&quot;, &quot;Round5&quot;, &quot;Round6&quot;, &quot;Round7&quot;, &quot;LastIndex&quot;)
-player.data &lt;- read.table(&quot;tournamentinfo.txt&quot;, header = FALSE, skip = 4, sep = &quot;|&quot;, fill = TRUE, stringsAsFactors = FALSE, col.names = col.names)[,1:10]</code></pre>
+player.data &lt;- read.table(&quot;https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/tournamentinfo.txt&quot;, header = FALSE, skip = 4, sep = &quot;|&quot;, fill = TRUE, stringsAsFactors = FALSE, col.names = col.names)[,1:10]</code></pre>
+<pre><code>## Warning in scan(file = file, what = what, sep = sep, quote = quote, dec =
+## dec, : EOF within quoted string</code></pre>
 </div>
 <div id="remove-white-spaces" class="section level3">
 <h3>3] Remove white spaces</h3>
