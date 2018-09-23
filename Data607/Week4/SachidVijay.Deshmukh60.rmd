@@ -1,0 +1,75 @@
+---
+title: "Data-607 Week-4 Project1"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 09/23/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week3/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week3/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607Week4Project1)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1] Library Initialization
+
+```{r library initialization}
+library(stringr)
+```
+
+### 2] Read Data
+```{r Read Data}
+col.names <- c("PairNum", "PalyerName", "TotPts", "Round1", "Round2", "Round3", "Round4", "Round5", "Round6", "Round7", "LastIndex")
+player.data <- read.table("tournamentinfo.txt", header = FALSE, skip = 4, sep = "|", fill = TRUE, stringsAsFactors = FALSE, col.names = col.names)[,1:10]
+```
+
+### 3] Remove white spaces
+```{r Remove Padding}
+player.data <- subset(player.data, !PalyerName == "")
+player.data = as.data.frame(sapply(player.data, str_trim))
+```
+### 4] Add State and players pre rating columns
+```{r add state and ranking}
+player.tmp = player.data[seq(2, nrow(player.data), 2), ]
+player.data =  player.data[seq(1, nrow(player.data), 2), ]
+player.data$PlayerState = player.tmp$PairNum
+player.data$PlayerPreRanking = str_trim(str_extract(player.tmp$PalyerName, "[[:blank:]]{1}[[:digit:]]{3,4}"))
+```
+
+### 5] Transform Opponent players
+```{r transform points}
+TransformPoints = function(x)
+{
+  str_trim(str_extract(x, "[[:space:]]+[[:digit:]]{1,2}"))
+}
+player.data[4:10] = sapply(player.data[4:10], TransformPoints)
+```
+
+### 6] Calculate opponent players pre-rating 
+```{r Calc Prerating}
+for (i in 1:nrow(player.data)) {
+  for(j in 4:10) {
+    player.data[i,j] <- player.data[player.data$PairNum == player.data[i,j],12][1]
+  }
+}
+
+```
+
+### 7] Calculate players avg rating
+```{r Avg Rating}
+player.data[4:10] = sapply(player.data[4:10], function(x) as.numeric(x))
+player.data$AvgRating <- round(rowMeans(player.data[, c(4:10)], na.rm = TRUE), 1)
+```
+
+### 8] Create final output
+```{r Final Output}
+player.data.out = subset(player.data, TRUE, c(PalyerName, PlayerState, TotPts, PlayerPreRanking, AvgRating))
+write.csv(player.data.out, file = "output.csv", row.names = FALSE)
+```
