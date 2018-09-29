@@ -1,0 +1,136 @@
+---
+title: "Data-607 Week-5 Assignment"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 09/29/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607Week5Assignment)
+* > [Output file location file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/output.csv)
+
+
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1] Library Initialization
+
+```{r library initialization}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+### 2] Read Data
+```{r Read Data}
+Airline.Schedule = read.csv("C:/MSDS/MSDSQ1/Data607/Week5/AirlineSchedule.csv", stringsAsFactors = F)
+```
+### 2] Preview Data
+```{r Preview Data}
+head(Airline.Schedule)
+str(Airline.Schedule)
+```
+
+### 3] Convert Dataframe into tall format. Convert city columns into row
+```{r Remove Padding}
+Airline.Schedule = Airline.Schedule%>%gather(City, FlightCount, LA:SEA)
+head(Airline.Schedule)
+```
+### 4] We are interested in only delayed Flight Count. Let's filter for Status = Delayed
+```{r delayed filter}
+Airline.Delayed = Airline.Schedule%>%dplyr::filter(Status=="Delayed")
+```
+
+### 5] Analyze Summary Statistics
+```{r summary stats}
+summary((Airline.Delayed%>%dplyr::filter(Airline == "Alaska")%>%data.frame())$FlightCount)
+
+summary((Airline.Delayed%>%dplyr::filter(Airline == "AM West")%>%data.frame())$FlightCount)
+```
+
+We can see that delayed flight count number are on different scale for Alaska and AM West airlines. Let's confirm this with boxplot
+
+### 6] Box plot to confirm difference in delayed flight counts
+```{r box plot}
+boxplot(Airline.Delayed$FlightCount ~ Airline.Delayed$Airline)
+```
+
+Boxplot also confirms that scale for flight delay counts for Alaska and AM West airlines are different. We can see two extreme observations which suggest some cities are more prone for flight delayes compared to others
+
+Since the scale is different we can't compare these stats directly. It's better to convert them to proportions for comparison purpose
+
+```{r prop}
+Alaska.Sum = sum((Airline.Delayed%>%dplyr::filter(Airline == "Alaska")%>%data.frame())$FlightCount)
+AMWest.Sum = sum((Airline.Delayed%>%dplyr::filter(Airline == "AM West")%>%data.frame())$FlightCount)
+
+Airline.Alaska.Delayed = Airline.Delayed%>%dplyr::filter(Airline == "Alaska")%>%dplyr::mutate(FlightCount = FlightCount/Alaska.Sum)%>%data.frame()
+
+Airline.AMWest.Delayed = Airline.Delayed%>%dplyr::filter(Airline == "AM West")%>%dplyr::mutate(FlightCount = FlightCount/AMWest.Sum)%>%data.frame()
+
+Airline.Delayed = rbind(Airline.Alaska.Delayed, Airline.AMWest.Delayed)
+```
+# 7] Let's visualize proportions with pie chart
+```{r pie chart}
+DrawPieChart = function(data)
+{
+  bp<- ggplot(data, aes(x="", y=FlightCount, fill=City))+
+  geom_bar(width = 1, stat = "identity")
+  pie <- bp + coord_polar("y", start=0)
+  pie
+  
+}
+DrawPieChart(Airline.Delayed%>%dplyr::filter(Airline == "Alaska")%>%data.frame())
+DrawPieChart(Airline.Delayed%>%dplyr::filter(Airline == "AM West")%>%data.frame())
+```
+
+Pie chart suggests that Alaska airline is more prone for delays in Seattle however AM West airline is more prone for delayes in Phoenix
+
+#8] Let's visualize proportions with Bar Chart
+```{r Bar Chart}
+DrawBarChart = function(data)
+{
+  ggplot(data=data, aes(x=City, y=FlightCount, fill=Airline)) +
+  geom_bar(stat="identity", position=position_dodge())
+}
+
+DrawBarChart(Airline.Delayed)
+```
+
+Bar chart also reveals that AM West is more prone for delayes in Phoenix and Alaska is more prone in delayes in Seattle
+
+# 9] Is Alaska airline more prone for delayes compared to AM West Airline?
+Let's see summary stats and boxplot
+```{r summ prop}
+summary((Airline.Delayed%>%dplyr::filter(Airline == "Alaska")%>%data.frame())$FlightCount)
+
+summary((Airline.Delayed%>%dplyr::filter(Airline == "AM West")%>%data.frame())$FlightCount)
+boxplot(Airline.Delayed$FlightCount ~ Airline.Delayed$Airline)
+```
+
+Above sumary stats suggests that both Alaska and AM West airline have same avg percentage of filght delay whihc is 20%. From boxplot we can observe that Alaska airline have higher variablity 2% to 20% (18% IQR) in general compared to AM West airline whihc ranges from 7% to 16% (9% IQR)
+
+From the above statistics it is difficult to conclude that one airline is more prone for delayes compared to other airline. Let's perform t test and chisquare test of independence to conclude our findings
+
+```{r chi square}
+Chisq.Delayed = Airline.Schedule%>%dplyr::filter(Status=="Delayed")
+Alaska.D.Cnt = Airline.Schedule%>%dplyr::filter(Status=="Delayed" & Airline=="Alaska")%>%dplyr::select(City, FlightCount)%>%dplyr::arrange(City)
+AMWest.D.Cnt = Airline.Schedule%>%dplyr::filter(Status=="Delayed" & Airline=="AM West")%>%dplyr::select(City, FlightCount)%>%dplyr::arrange(City)
+chisqdf = data.frame(Alaska.D.Cnt$City, Alaska.D.Cnt$FlightCount, AMWest.D.Cnt$FlightCount)
+names(chisqdf) = c("City", "AlaskaCount", "AMWestCount")
+chisq.test(chisqdf[,-1])
+
+t.test(Airline.Alaska.Delayed$FlightCount, Airline.AMWest.Delayed$FlightCount)
+
+```
+
+#### 1] ChiSquare test above have p value of 2.2e-16. We  can reject null hypothesis that Delay in airline is independent of cities. We can conclude that particular city has significant impact on delay in airlines
+
+#### 2] Student t test above have p value of 1. We can't reject null hypotheisis that difference in mean for flight delayes between two airlines is 0. We can conclude that both alirlines have equal likelihood of flight delays
