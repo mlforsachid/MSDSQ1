@@ -1,17 +1,17 @@
 ---
 title: "Data-607 Week-5 Assignment"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 09/29/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/SachidVijay.Deshmukh60.rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/SachidVijay.Deshmukh60.pdf)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data607Week5Assignment)
-* > [Output file location file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week4/output.csv)
+* > [CSV file location file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/AirlineSchedule.csv)
 
 
 
@@ -31,7 +31,7 @@ library(ggplot2)
 
 ### 2] Read Data
 ```{r Read Data}
-Airline.Schedule = read.csv("C:/MSDS/MSDSQ1/Data607/Week5/AirlineSchedule.csv", stringsAsFactors = F)
+Airline.Schedule = read.csv("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week5/AirlineSchedule.csv", stringsAsFactors = F)
 ```
 ### 2] Preview Data
 ```{r Preview Data}
