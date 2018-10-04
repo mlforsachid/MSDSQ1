@@ -1,8 +1,8 @@
 ---
 title: "Data-607 Week-6 Assignment"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 ##---------------------------------------------------------------------------
@@ -12,7 +12,7 @@ output:
 * > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week6/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data607Week6Assignment)
 * > [CSV file-1](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CrimeRate.csv)
-* > [CSV file-2](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/AirlineSchedule.csv)
+* > [CSV file-2](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/StudentGrades.csv)
 * > [CSV file-3](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CityTemp.csv)
 
 ##---------------------------------------------------------------------------
