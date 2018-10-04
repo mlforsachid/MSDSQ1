@@ -1,19 +1,19 @@
 ---
 title: "Data-607 Week-6 Assignment"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 10/04/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week6/SachidVijay.Deshmukh60.rmd)
 * > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data607Week6Assignment)
-* > [CSV file-1](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/AirlineSchedule.csv)
+* > [CSV file-1](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CrimeRate.csv)
 * > [CSV file-2](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/AirlineSchedule.csv)
-* > [CSV file-3](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week5/AirlineSchedule.csv)
+* > [CSV file-3](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CityTemp.csv)
 
 ##---------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ library(ggplot2)
 #### Read Crime Rate data for three countries reported in year 1999
 
 ```{r Read Data}
-Crime.Rate = read.csv("C:/MSDS/MSDSQ1/Data607/Week6/CrimeRate.csv", stringsAsFactors = F)
+Crime.Rate = read.csv("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CrimeRate.csv", stringsAsFactors = F)
 ```
 #### Preview Data
 
@@ -61,7 +61,7 @@ head(Crime.Rate)
 #### Read Student Grade data for three subjects
 
 ```{r Read StudentGrData}
-Stu.Grade = read.csv("C:/MSDS/MSDSQ1/Data607/Week6/StudentGrades.csv", stringsAsFactors = F)
+Stu.Grade = read.csv("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/StudentGrades.csv", stringsAsFactors = F)
 ```
 #### Preview Data
 
@@ -89,7 +89,7 @@ head(Stu.Grade)
 #### Read City Temperature data for three cities
 
 ```{r Read CityTmpData}
-City.Temp = read.csv("C:/MSDS/MSDSQ1/Data607/Week6/CityTemp.csv", stringsAsFactors = F)
+City.Temp = read.csv("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CityTemp.csv", stringsAsFactors = F)
 ```
 #### Preview Data
 
