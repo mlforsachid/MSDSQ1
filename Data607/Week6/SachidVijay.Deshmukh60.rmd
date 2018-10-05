@@ -1,0 +1,113 @@
+---
+title: "Data-607 Week-6 Assignment"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 10/04/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week6/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week6/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607Week6Assignment)
+* > [CSV file-1](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CrimeRate.csv)
+* > [CSV file-2](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/StudentGrades.csv)
+* > [CSV file-3](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CityTemp.csv)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1] Library Initialization
+
+```{r library initialization}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+### 2] Data Set-1 Analysis
+
+#### Read Crime Rate data for three countries reported in year 1999
+
+```{r Read Data}
+Crime.Rate = read.csv("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CrimeRate.csv", stringsAsFactors = F)
+```
+#### Preview Data
+
+```{r Preview Data}
+head(Crime.Rate)
+str(Crime.Rate)
+```
+#### Note that crimeinfo column is stacked. Cases indicates the crime cases reported for a specific country and population indicates total population of the country. Let's spread crimeinfo column
+
+```{r spread column}
+Crime.Rate = tidyr::spread(Crime.Rate, crimeinfo, value)
+```
+
+#### Preview unpivoted Crime Rate
+
+```{r unpcrimerate}
+head(Crime.Rate)
+```
+
+#### Note how crimerate column is spread based on categories. This also flattened the whole data frame.
+
+### 3] Data Set-2 Analysis
+
+#### Read Student Grade data for three subjects
+
+```{r Read StudentGrData}
+Stu.Grade = read.csv("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/StudentGrades.csv", stringsAsFactors = F)
+```
+#### Preview Data
+
+```{r Preview StudentGrData}
+head(Stu.Grade)
+str(Stu.Grade)
+```
+
+#### Note that each grades for a particular subject are on different column. Let's create a single Subject column.
+
+```{r spread StudentGrcolumn}
+Stu.Grade = tidyr::gather(Stu.Grade, "subject", "grades", 2:4)
+```
+
+#### Preview unpivoted Crime Rate
+
+```{r StudentGrunpcrimerate}
+head(Stu.Grade)
+```
+
+#### Note how individual columns for subject are collapsed into single column. The values are captured under newly creared grades column
+
+### 4] Data Set-3 Analysis
+
+#### Read City Temperature data for three cities
+
+```{r Read CityTmpData}
+City.Temp = read.csv("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CityTemp.csv", stringsAsFactors = F)
+```
+#### Preview Data
+
+```{r Preview CityTmpData}
+head(City.Temp)
+str(City.Temp)
+```
+
+#### Note Date column. Let's separate Month, Day and Year into separate columns
+
+```{r separate CityTmpcolumn}
+City.Temp = tidyr::separate(City.Temp, "date", c("month", "day", "year"), sep="/")
+```
+
+#### Preview unpivoted Crime Rate
+
+```{r CityTmpunpcrimerate}
+head(City.Temp)
+```
+
+#### Note how date column is splitted across three separate columns (month, day and year)
