@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Books>
+	<Book>
+		<Title>Fluent in 3 Months</Title>
+		<Authors>Benny Lewis</Authors>
+		<Type>Audio Book</Type>
+		<Price>15</Price>
+		<Publisher>HarperCollins</Publisher>
+	</Book>
+	<Book>
+		<Title>How to Learn Almost Anything in 48 Hours</Title>
+		<Authors>Tansel Ali</Authors>
+		<Type>E Book</Type>
+		<Price>12</Price>
+		<Publisher>Adams Media</Publisher>
+	</Book>
+	<Book>
+		<Title>CompTIA A+ Complete Study Guide</Title>
+		<Authors>Quentin Docter, Emmett Dulaney, Toby Skandier</Authors>
+		<Type>Book</Type>
+		<Price>33</Price>
+		<Publisher>Wiley</Publisher>
+	</Book>
+</Books>

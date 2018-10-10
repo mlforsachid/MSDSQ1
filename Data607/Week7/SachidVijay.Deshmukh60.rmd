@@ -1,0 +1,92 @@
+---
+title: "Data-607 Week-7 Assignment"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 10/09/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week6/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week6/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607Week7Assignment)
+* > [CSV file-1](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CrimeRate.csv)
+* > [CSV file-2](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/StudentGrades.csv)
+* > [CSV file-3](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CityTemp.csv)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1] Library Initialization
+
+```{r library initialization}
+library(XML)
+library(RJSONIO) 
+library(XML)
+```
+
+### 2] Read HTML File
+
+#### Read HTML file for Books catalogue
+
+```{r Read HTML Data}
+books.html <- readHTMLTable("D:/MSDS/MSDSQ1/Data607/Week7/Books.html")
+```
+
+#### Preview R dataframe constructed from HTML file
+
+```{r Preview HTML Data}
+head(books.html)
+```
+
+### 3] Read XML File
+
+#### Read XML file for Books catalogue
+
+```{r Read XML Data}
+ books.xml <- xmlToDataFrame("D:/MSDS/MSDSQ1/Data607/Week7/Books.xml")
+```
+#### Preview R dataframe constructed from XML file
+
+
+```{r Preview XML Data}
+head(books.xml)
+```
+
+### 4] Read JSON File
+
+#### Read JSON file for Books catalogue
+
+```{r Read JSON Data}
+books.json <- fromJSON("D:/MSDS/MSDSQ1/Data607/Week7/Books.json")
+books.json <- lapply(books.json, function(x) {
+  x[sapply(x, is.null)] <- NA
+  unlist(x)
+})
+books.json<-as.data.frame(do.call("cbind", books.json))
+```
+#### Preview R dataframe constructed from JSON file
+
+```{r Preview JSON Data}
+head(books.json)
+```
+
+### 5] Are the three data frames identical?
+
+
+#### Check the column data types of three data frame
+
+```{r Check column data types}
+str(books.html)
+str(books.xml)
+str(books.json)
+```
+
+#### 1] We can see that column data types of all three data frame are same
+#### 2] We can see that no of columns and column orders for all three data frame are same
+#### 3] We can see that data frame generated from json file have row names as Book1, Book2 and Book3. The data frames generated from HTML and XML files have numeric value assigned for row names.
+

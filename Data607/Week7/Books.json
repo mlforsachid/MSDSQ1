@@ -1,0 +1,38 @@
+{
+  "Title": [
+    {
+
+      "Book1": "Fluent in 3 Months",
+      "Book2": "How to Learn Almost Anything in 48 Hours",
+      "Book3": "CompTIA A+ Complete Study Guide"
+    }
+  ],
+  "Authors": [
+    {
+      "Book1": "Benny Lewis",
+      "Book2": "Tansel Ali",
+      "Book3": "Quentin Docter, Emmett Dulaney, Toby Skandier"
+    }
+  ],
+  "Type": [
+    {
+      "Book1": "Audio Book",
+      "Book2": "E Book",
+      "Book3": "Book"
+    }
+  ],
+  "Price": [
+    {
+      "Book1": "15",
+      "Book2": "12",
+      "Book3": "33"
+    }
+  ],
+  "Publisher": [
+    {
+      "Book1": "HarperCollins",
+      "Book2": "Adams Media",
+      "Book3": "Wiley"
+    }
+  ]
+}
