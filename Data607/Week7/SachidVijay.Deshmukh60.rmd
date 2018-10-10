@@ -8,12 +8,12 @@ output:
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 10/09/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week6/SachidVijay.Deshmukh60.rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week6/SachidVijay.Deshmukh60.pdf)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week7/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week7/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data607Week7Assignment)
-* > [CSV file-1](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CrimeRate.csv)
-* > [CSV file-2](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/StudentGrades.csv)
-* > [CSV file-3](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week6/CityTemp.csv)
+* > [HTML File](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.html)
+* > [XML File](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.xml)
+* > [JSON File](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.json)
 
 ##---------------------------------------------------------------------------
 
