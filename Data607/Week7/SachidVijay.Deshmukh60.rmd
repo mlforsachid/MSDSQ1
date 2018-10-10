@@ -26,7 +26,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r library initialization}
 library(XML)
 library(RJSONIO) 
-library(XML)
+library(RCurl)
 ```
 
 ### 2] Read HTML File
@@ -34,7 +34,8 @@ library(XML)
 #### Read HTML file for Books catalogue
 
 ```{r Read HTML Data}
-books.html <- readHTMLTable("D:/MSDS/MSDSQ1/Data607/Week7/Books.html")
+html.url = getURL("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.html")
+books.html <- readHTMLTable(html.url)
 ```
 
 #### Preview R dataframe constructed from HTML file
@@ -48,7 +49,8 @@ head(books.html)
 #### Read XML file for Books catalogue
 
 ```{r Read XML Data}
- books.xml <- xmlToDataFrame("D:/MSDS/MSDSQ1/Data607/Week7/Books.xml")
+xml.url = getURL("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.xml")
+ books.xml <- xmlToDataFrame(xml.url)
 ```
 #### Preview R dataframe constructed from XML file
 
@@ -62,7 +64,8 @@ head(books.xml)
 #### Read JSON file for Books catalogue
 
 ```{r Read JSON Data}
-books.json <- fromJSON("D:/MSDS/MSDSQ1/Data607/Week7/Books.json")
+json.url = getURL("https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.json")
+books.json <- fromJSON(json.url)
 books.json <- lapply(books.json, function(x) {
   x[sapply(x, is.null)] <- NA
   unlist(x)

@@ -157,13 +157,15 @@ $(document).ready(function () {
 <h3>1] Library Initialization</h3>
 <pre class="r"><code>library(XML)
 library(RJSONIO) 
-library(XML)</code></pre>
+library(RCurl)</code></pre>
+<pre><code>## Loading required package: bitops</code></pre>
 </div>
 <div id="read-html-file" class="section level3">
 <h3>2] Read HTML File</h3>
 <div id="read-html-file-for-books-catalogue" class="section level4">
 <h4>Read HTML file for Books catalogue</h4>
-<pre class="r"><code>books.html &lt;- readHTMLTable(&quot;D:/MSDS/MSDSQ1/Data607/Week7/Books.html&quot;)</code></pre>
+<pre class="r"><code>html.url = getURL(&quot;https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.html&quot;)
+books.html &lt;- readHTMLTable(html.url)</code></pre>
 </div>
 <div id="preview-r-dataframe-constructed-from-html-file" class="section level4">
 <h4>Preview R dataframe constructed from HTML file</h4>
@@ -187,7 +189,8 @@ library(XML)</code></pre>
 <h3>3] Read XML File</h3>
 <div id="read-xml-file-for-books-catalogue" class="section level4">
 <h4>Read XML file for Books catalogue</h4>
-<pre class="r"><code> books.xml &lt;- xmlToDataFrame(&quot;D:/MSDS/MSDSQ1/Data607/Week7/Books.xml&quot;)</code></pre>
+<pre class="r"><code>xml.url = getURL(&quot;https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.xml&quot;)
+ books.xml &lt;- xmlToDataFrame(xml.url)</code></pre>
 </div>
 <div id="preview-r-dataframe-constructed-from-xml-file" class="section level4">
 <h4>Preview R dataframe constructed from XML file</h4>
@@ -210,7 +213,8 @@ library(XML)</code></pre>
 <h3>4] Read JSON File</h3>
 <div id="read-json-file-for-books-catalogue" class="section level4">
 <h4>Read JSON file for Books catalogue</h4>
-<pre class="r"><code>books.json &lt;- fromJSON(&quot;D:/MSDS/MSDSQ1/Data607/Week7/Books.json&quot;)
+<pre class="r"><code>json.url = getURL(&quot;https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week7/Books.json&quot;)
+books.json &lt;- fromJSON(json.url)
 books.json &lt;- lapply(books.json, function(x) {
   x[sapply(x, is.null)] &lt;- NA
   unlist(x)
