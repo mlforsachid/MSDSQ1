@@ -11,9 +11,9 @@ output:
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 10/16/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week3/Homework2/SachidVijay.Deshmukh60.Rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week3/Homework2/SachidVijay.Deshmukh60.pdf)
-* > [RPubs location of published file](http://rpubs.com/sachid/Data606Week3Homework)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week4/Homework3/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week4/Homework3/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data606Chapter3Homework)
 
 ##---------------------------------------------------------------------------
 
