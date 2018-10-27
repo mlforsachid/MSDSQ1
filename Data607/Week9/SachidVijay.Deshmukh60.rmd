@@ -1,0 +1,90 @@
+---
+title: "Data-607 Week-9 Assignment"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 10/26/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week7/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week7/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607Assignment9)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1] Library Initialization
+
+```{r library initialization}
+library(jsonlite)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+```
+
+### 2] Read movie critics info
+
+```{r Read movie critics info}
+API.URL = "http://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key=ac5b7916e92c4b21926210fbe19e6434&critics-pick=Y"
+Movie.Critics <- fromJSON(API.URL)$results
+```
+
+### 3] Preview resulting data frame and column types
+
+```{r preview df}
+head(Movie.Critics)
+str(Movie.Critics)
+```
+
+Resulting DF have 20 rows and 16 columns. Following is the more information on data frame columns
+
+*> display_title : Movie Name
+*> mpaa_rating : Movie Rating
+*> critics_pick : Whether critics pick or not
+*> byline : Name of the critics
+*> headline : Headline Info
+*> summary_short : Short summary
+*> publication_date : Date of publication
+*> opening_date : Date of movie opening
+*> date_updated : Updated Date
+*> link.type : Link Type
+*> link.url : Link URL
+*> link.suggested_link_text : Suggested link url
+*> multimedia.type : Type of multimedia
+*> multimedia.src : Source of multimedia
+*> multimedia.width : Width of multimedia
+*> multimedia.height : Height of multimedia
+
+### 4] Fill null values in rating column
+
+```{r fill rating null}
+Movie.Critics$mpaa_rating[Movie.Critics$mpaa_rating == ''] <- 'Not Rated'
+```
+
+### 5] Show bar chart of rating type
+
+```{r rating type bar chart}
+Movie.Critics %>%
+   
+    ggplot(aes(x=mpaa_rating, fill=mpaa_rating)) + geom_bar(position = "dodge") +# plot
+    ggtitle("Movie Rating bar plot")
+```
+
+Top most critics reviews are for not rated movies
+
+### 6] Show bar chart of critics
+
+```{r show bar chart as per critic}
+
+Movie.Critics %>%
+   
+    ggplot(aes(x=byline, fill=byline)) + geom_bar(position = "dodge") +# plot
+    ggtitle("Critic bar plot")
+```
+
+Top most critics reviews are done by Glenn Kenny. Second largest critics review are done by AO Scott and Jeannette Catsoulis
