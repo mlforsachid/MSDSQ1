@@ -8,8 +8,8 @@ output:
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 11/02/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week9/SachidVijay.Deshmukh60.rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week9/SachidVijay.Deshmukh60.pdf)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Project4/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Project4/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data607Project4)
 
 ##---------------------------------------------------------------------------
