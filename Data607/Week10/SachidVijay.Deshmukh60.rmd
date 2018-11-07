@@ -8,9 +8,9 @@ output:
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 10/26/2018
-* > [GitHub Location for rmd file](http://rpubs.com/sachid/Data607_RecommenderSystem)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week9/SachidVijay.Deshmukh60.pdf)
-* > [RPubs location of published file](http://rpubs.com/sachid/Data607Assignment9)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week10/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week10/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607_RecommenderSystem)
 
 ##---------------------------------------------------------------------------
 
