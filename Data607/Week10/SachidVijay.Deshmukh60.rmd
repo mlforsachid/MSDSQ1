@@ -30,7 +30,7 @@ output:
 * Getting quality service
 * Get more information on the restaurants based on existing reviews
 
-### Reverse Engineer
+### Reverse Engineering
 
 Yelp depends on existing users for their recommendations. Essentially users can provide review and ratings for the restaurants they have visited. They can share the food they like and overall quality of the service. Users also indicate improvements they would like to see for a particular restaurant. Yelp uses this data for coming up with restaurants recommendation for future use
 
