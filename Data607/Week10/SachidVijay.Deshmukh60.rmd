@@ -1,0 +1,46 @@
+---
+title: "Recommender Systems"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 10/26/2018
+* > [GitHub Location for rmd file](http://rpubs.com/sachid/Data607_RecommenderSystem)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week9/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607Assignment9)
+
+##---------------------------------------------------------------------------
+
+### [Yelp](http://www.yelp.com)
+
+
+### Scenario Design
+
+1] What are the target users?
+
+* Users who are looking for fine dining experience nearby based on users' ratings
+
+2] What are their key goals?
+
+* Finding best restaurants nearby
+* Getting best value for money
+* Getting quality service
+* Get more information on the restaurants based on existing reviews
+
+### Reverse Engineer
+
+Yelp depends on existing users for their recommendations. Essentially users can provide review and ratings for the restaurants they have visited. They can share the food they like and overall quality of the service. Users also indicate improvements they would like to see for a particular restaurant. Yelp uses this data for coming up with restaurants recommendation for future use
+
+### Recommendations for Improvements
+
+Yelp depends on users' feedback and review for providing recommendations. Following improvements can be incorporated in overall process
+
+* Removing bias from users review
+* Identifying fraud.
+* Not becoming marketing ground for restaurants to promote their business
+* How to rate really good restaurants having lower review counts
+
+
