@@ -1,12 +1,22 @@
 ---
 title: 'Foundations for statistical inference - Confidence intervals'
 output:
+  pdf_document: default
   html_document:
     css: ./lab.css
     highlight: pygments
     theme: cerulean
-  pdf_document: default
 ---
+
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 10/05/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week4/Lab3/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week4/Lab3/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data606_Lab4b)
+
+##---------------------------------------------------------------------------
+
 
 ## Sampling from Ames, Iowa
 
@@ -43,8 +53,32 @@ samp <- sample(population, 60)
 "typical" size within your sample? Also state precisely what you interpreted 
 "typical" to mean.
 
+```{r Sample Desc}
+summary(samp)
+boxplot(samp)
+hist(samp)
+qqnorm(samp)
+
+getmode <- function(v) {
+   uniqv <- unique(v)
+   uniqv[which.max(tabulate(match(v, uniqv)))]
+}
+
+getmode(samp)
+```
+
+Answer : Above ground living area has range of 698 to 2646 SFT. Median value is 1572 and Mean value is 1515. Mean is slightly lesser than median which indicate lightly left skewed data but skewness is not very extreme
+
+Boxplot indicates that most of the houses have above ground living area either small (1st and 2nd quartile) or big (greater than 3rd quartile) Very few observations are sitting between (2nd and 3rd quartile) indicating smaller homes are built with medium size above ground living area.
+
+Histogram and Normality plot suggests that sample is close to the normal distribution
+
+I would say mode of the sample is the typical size within sample. With mode  = 1646 and mean = 1515 I would say typical size of the above ground living area is higher than mean. This indicates more homes are having smaller size above ground living area. This in turn suggest left skew in the data which can be seen though histogram as well. 
+
 2.  Would you expect another student's distribution to be identical to yours? 
 Would you expect it to be similar? Why or why not?
+
+Answer : I would expect another sample to be similar in distribution however point estimates would vary. I won't expect exact same mean and median for another sample however left skewed data which is close to normal distribution is expected
 
 ## Confidence intervals
 
@@ -84,9 +118,16 @@ There are a few conditions that must be met for this interval to be valid.
 distributed and have standard error $s / \sqrt{n}$. What conditions must be 
 met for this to be true?
 
+Answer : Following two conditions should be satisfied for above eqation to be  true
+
+* The population from where sample is drawn should be normally distributed
+* Sample size should be sufficiently large for accruate estimation of the Standard Error. Statistical theory suggest that Sample size greater than 30 is desired to achieve accurate results
+
 ## Confidence levels
 
 4.  What does "95% confidence" mean? If you're not sure, see Section 4.2.2.
+
+Answer : A 95% confidence interval is a range of values that you can be 95% certain contains the true mean of the population
 
 In this case we have the luxury of knowing the true population mean since we 
 have data on the entire population. This value can be calculated using the 
@@ -100,12 +141,16 @@ mean(population)
 Ames? If you are working on this lab in a classroom, does your neighbor's 
 interval capture this value? 
 
+Answer : Mean of the entire population is 1499.69 and 95% confidence interval derived from sample is 1397.989 to 1632.644. From this observation we can conclude that confidence interval captures the true average of the houses in Ames
+
 6.  Each student in your class should have gotten a slightly different 
 confidence interval. What proportion of those intervals would you expect to 
 capture the true population mean? Why? If you are working in this lab in a 
 classroom, collect data on the intervals created by other students in the 
 class and calculate the proportion of intervals that capture the true 
 population mean.
+
+Answer : 95% of the sample intervals should capture true population mean. Our range is 95% means there is still 5% chance that the sample mean interval will not represent the actual population mean. However this is fine for our analysis since we are aligning with 95% confidence interval and it is understood that it can be wrong 5% of the times
 
 Using R, we're going to recreate many samples to learn more about how sample 
 means and confidence intervals vary from one sample to another. *Loops* come 
@@ -161,13 +206,17 @@ c(lower_vector[1], upper_vector[1])
     plot all intervals. What proportion of your confidence intervals include 
     the true population mean? Is this proportion exactly equal to the 
     confidence level? If not, explain why.
+    
+Answer : From the plot below we can see that 1 out of 50 samples have confidence interval which does not include true population mean. This is expected since we are calculating 95% confidence interval. That means we have at most 5% chance of error. As per this statistics it is expected to have 5% of 50 samples that means ~3 samples to have confidence interval which doesn't represent true population mean. The plot is in line with our expectations.
 
-    ```{r plot-ci, eval=TRUE}
+```{r plot-ci, eval=FALSE}
     plot_ci(lower_vector, upper_vector, mean(population))
-    ```
+```
 
 -   Pick a confidence level of your choosing, provided it is not 95%. What is 
     the appropriate critical value?
+    
+Answer : Critical value for 90% confidence interval is c(qnorm(0.05), qnorm(0.95))
 
 -   Calculate 50 confidence intervals at the confidence level you chose in the 
     previous question. You do not need to obtain new samples, simply calculate 
@@ -176,6 +225,15 @@ c(lower_vector[1], upper_vector[1])
     calculate the proportion of intervals that include the true population 
     mean. How does this percentage compare to the confidence level selected for
     the intervals?
+
+```{r eval=FALSE}
+lower_vector.90 <- samp_mean - 1.64 * samp_sd / sqrt(n)
+upper_vector.90 <- samp_mean + 1.64 * samp_sd / sqrt(n)
+plot_ci(lower_vector.90, upper_vector.90, mean(population))
+```
+
+Answer : We can see that 5 samples out of 50 have interval which doesn't include true population parameter. This is expected at 90% confidence interval. At 90% confidence interval, we have 10% chance of making error. That means we can expect 10% (10% of 50 = 5) samples to have confidence interval which doesn't include true population mean. The above observation is inline with our expectation
+
 
 <div id="license">
 This is a product of OpenIntro that is released under a [Creative Commons 
