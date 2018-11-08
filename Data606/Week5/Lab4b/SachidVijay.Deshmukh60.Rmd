@@ -1,18 +1,18 @@
 ---
 title: 'Foundations for statistical inference - Confidence intervals'
 output:
-  pdf_document: default
   html_document:
     css: ./lab.css
     highlight: pygments
     theme: cerulean
+  pdf_document: default
 ---
 
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
-###**Date :** 10/05/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week4/Lab3/SachidVijay.Deshmukh60.Rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week4/Lab3/SachidVijay.Deshmukh60.pdf)
+###**Date :** 11/08/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week5/Lab4b/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week5/Lab4b/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data606_Lab4b)
 
 ##---------------------------------------------------------------------------
@@ -216,7 +216,7 @@ Answer : From the plot below we can see that 1 out of 50 samples have confidence
 -   Pick a confidence level of your choosing, provided it is not 95%. What is 
     the appropriate critical value?
     
-Answer : Critical value for 90% confidence interval is c(qnorm(0.05), qnorm(0.95))
+Answer : Critical value for 90% confidence interval is c(qnorm(0.05), qnorm(0.95)) which is -1.64 to 1.64
 
 -   Calculate 50 confidence intervals at the confidence level you chose in the 
     previous question. You do not need to obtain new samples, simply calculate 
