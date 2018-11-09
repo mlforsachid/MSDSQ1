@@ -1,12 +1,23 @@
 ---
 title: 'Foundations for statistical inference - Sampling distributions'
 output:
+  pdf_document: default
   html_document:
     css: ./lab.css
     highlight: pygments
     theme: cerulean
-  pdf_document: default
 ---
+
+
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 11/08/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week5/Lab4b/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week5/Lab4b/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data606Lab4a)
+
+##---------------------------------------------------------------------------
+
 
 In this lab, we investigate the ways in which the statistics from a random 
 sample of data can serve as point estimates for population parameters.  We're 
@@ -48,6 +59,10 @@ hist(area)
 
 1.  Describe this population distribution.
 
+Answer: From the summary stats, we can see that above ground living area ranges from 334 SFT to 5642 SFT. It has mean of 1500 and median of 1442. Mean in higher than median which indicates right skewed data. We can see from the summary statistics that most of the homes are small within 1st and 2nd quartile or large morethan third quartile. Very few homes are available in medium sizes which are between 2nd and 3rd quartile
+
+Histogram also supports our findings of right skewed data. WE can see the long tail on right side of the histogram
+
 ## The unknown sampling distribution
 
 In this lab we have access to the entire population, but this is rarely the 
@@ -71,6 +86,14 @@ home sales.
 2.  Describe the distribution of this sample. How does it compare to the 
     distribution of the population?
 
+```{r Sample Dist}
+summary(samp1)
+boxplot(samp1)
+hist(samp1)
+```
+
+Answer : Sample point estimates are different than population true paramters however the overall data distribution is the same. From the BoxPlot and histogram we can conclude that sample is right skewed and more homes are in small and large bucket. Overall homes with medium sizes are small in number
+
 If we're interested in estimating the average living area in homes in Ames 
 using the sample, our best single guess is the sample mean.
 
@@ -88,6 +111,14 @@ population.
     mean of `samp2` compare with the mean of `samp1`?  Suppose we took two 
     more samples, one of size 100 and one of size 1000. Which would you think 
     would provide a more accurate estimate of the population mean?
+
+```{r samp2}
+samp2 = sample(area, 50)
+mean(samp2)
+```
+
+Answer : Mean of sample 2 is 1539.92. If we compare this to overall population mean of 1499.69, it is off by 2.68%. It is not bad considering our small sample size of 50. As per statistical theory, error margin of population inference decreases as sample size increases. Larger the sample size better are the population estimates. From the above scenario Sample size with 1000 items will be better predictors of true population paramter compared to the sample of 100 items.
+
 
 Not surprisingly, every time we take another random sample, we get a different 
 sample mean.  It's useful to get a sense of just how much variability we 
@@ -124,6 +155,8 @@ the mean of each sample, and store each result in a vector called
     distribution, and be sure to specifically note its center.  Would you 
     expect the distribution to change if we instead collected 50,000 sample 
     means?
+
+Answer: There are 5000 items in sample_means50. Each item represents sample mean of 50 items. Sampling distribution of sample means is nothing but the distribution plotted after drawing multiple samples from the true population repeatedly and taking their mean. More samples help us to better estimate population paramter. if we collect 50,000 samples, we will have more correct estimation of the true population paramter, however it won't change the distribution. Overall distribution will remain normal as it was in the case of 5,000 samples.
 
 ## Interlude: The `for` loop
 
@@ -200,6 +233,20 @@ initialized at the outset.
     `sample_means_small` into the console and press enter).  How many elements 
     are there in this object called `sample_means_small`? What does each 
     element represent?
+    
+```{r Sample Small}
+sample_means_small <- rep(NA, 100)
+
+for(i in 1:100){
+   samp.small <- sample(area, 50)
+   sample_means_small[i] <- mean(samp.small)
+}
+sample_means_small
+
+```
+
+Answer : Object sample_means_small have 100 items. Each element represent mean of the 50 samples collected from entire population
+
 
 ## Sample size and the sampling distribution
 
@@ -264,6 +311,8 @@ plotted with the same limits on the x-axis.
 
 6.  When the sample size is larger, what happens to the center?  What about the spread?
 
+Answer : As sample size increases more values are accumulated around center. Ther overall spread of the distribution decreases as sample size increases.
+
 * * *
 ## On your own
 
@@ -272,6 +321,12 @@ Ames.  Now you'll try to estimate the mean home price.
 
 -   Take a random sample of size 50 from `price`. Using this sample, what is 
     your best point estimate of the population mean?
+    
+```{r price samp}
+samp.price = sample(price, 50)
+mean(samp.price)
+```
+Answer : Our best point estimate of the population mean = sample mean which is 161309. The actual population mean can be slightly below or above the sample mean and that depends on which 50 items are collected in the sample
 
 -   Since you have access to the population, simulate the sampling 
     distribution for $\bar{x}_{price}$ by taking 5000 samples from the 
@@ -281,6 +336,18 @@ Ames.  Now you'll try to estimate the mean home price.
     what would you guess the mean home price of the population to be? Finally, 
     calculate and report the population mean.
 
+```{r SampDistPrice50}
+sample_means50 = rep(NA, 5000)
+for(i in 1 : 5000){
+  samp.price = sample(price,50)
+ sample_means50[i] = mean(samp.price)
+}
+hist(sample_means50, breaks = 25)
+mean(sample_means50)
+mean(price)
+```
+Answer : Shape of the sampling distribution appears normal. The mean home price can be estimated by calculating mean of the 5000 sample means. In this case we can simply take mean of object sample_means50. That is 180850.9. The true population mean is 180796.1. We can see that it is very close to the value we derived from sampling distribution of the sample means
+
 -   Change your sample size from 50 to 150, then compute the sampling 
     distribution using the same method as above, and store these means in a 
     new vector called `sample_means150`. Describe the shape of this sampling 
@@ -288,9 +355,26 @@ Ames.  Now you'll try to estimate the mean home price.
     size of 50.  Based on this sampling distribution, what would you guess to 
     be the mean sale price of homes in Ames?
 
+```{r SampDistPrice150}
+sample_means150 = rep(NA, 5000)
+for(i in 1 : 5000){
+  samp.price = sample(price,150)
+ sample_means150[i] = mean(samp.price)
+}
+hist(sample_means150, breaks = 25)
+mean(sample_means150)
+
+
+```
+
+Answer : As sample size increased from 50 to 150, shape of the distribution became perfectly normal. Based on this sampling distribution the estimated value of true population mean is 180831.4. We can see here it is more closer to true population mean of 180796.1 compare to point estimates we had from sampled of size 50. As Sample size increases the estimates became more accurate.
+
+
 -   Of the sampling distributions from 2 and 3, which has a smaller spread?  If
     we're concerned with making estimates that are more often close to the 
     true value, would we prefer a distribution with a large or small spread?
+
+Answer : Between observation of #2 and #3 we can see that spread of the distribution is decreased in #3 since sample size is increased from 50 to 150. We always prefer distribution with lesser spread since that gives us more accurate estimation of the true population paramter.
 
 <div id="license">
 This is a product of OpenIntro that is released under a [Creative Commons 
