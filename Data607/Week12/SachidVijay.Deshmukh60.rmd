@@ -8,11 +8,11 @@ output:
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
 ###**Date :** 11/14/2018
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week10/SachidVijay.Deshmukh60.rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week10/SachidVijay.Deshmukh60.pdf)
-* > [RPubs location of published file](http://rpubs.com/sachid/Data607_RecommenderSystem)
-* > [GitHub location for tb.sql file](http://rpubs.com/sachid/Data607_RecommenderSystem)
-* > [GitHub location for tb.csv file](http://rpubs.com/sachid/Data607_RecommenderSystem)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week12/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/Week12/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data607Week12Assignment)
+* > [GitHub location for tb.sql file](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week12/tb.sql)
+* > [GitHub location for tb.csv file](https://raw.githubusercontent.com/mlforsachid/MSDSQ1/master/Data607/Week12/tb.csv)
 
 ##---------------------------------------------------------------------------
 
