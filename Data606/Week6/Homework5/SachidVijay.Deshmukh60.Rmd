@@ -1,0 +1,87 @@
+---
+title: 'Data 606: Chapter-5 Homework'
+output:
+  html_document:
+    css: ./lab.css
+    highlight: pygments
+    theme: cerulean
+  pdf_document: default
+---
+
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 11/16/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week5/Homework4/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week5/Homework4/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data606Homework5)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1.  > 5.6 Calculate the sample mean, the margin of error, and the sample standard deviation.
+
+```{r statscalc}
+N = 25
+Margin.Error = (77-65)/2
+Sample.Mean = 77 - Margin.Error
+Crit.Value = qt(1-(0.05), (N-1))
+Standard.Error = Margin.Error/Crit.Value
+Sample.SD = Standard.Error * sqrt(N)
+print(paste("Sample mean =", Sample.Mean))
+print(paste("Margin of error =", Margin.Error))
+print(paste("Sample standard deviation =", Sample.SD))
+```
+
+2. > 5.48 (A) Write hypotheses for evaluating whether the average number of hours worked varies across the groups.
+
+Answer : 
+
+Null Hypothesis : The means of each group are equal
+Alternate Hypothesis : The means of each group are not equal
+
+3. > 5.48 (B) Check conditions and describe any assumptions you must make to proceed with the test.
+
+Answer : Sample sizes are fairly large. Data looks noramlly distributed. This is good for hypothesis testing. We need to assume independence across groups for achieving fair results in hypothesis testing
+
+4. > 5.48 (C) Below is part of the output associated with this test. Fill in the empty cells.
+
+```{r}
+groups <- 5
+samplesize <- 1172
+meansq.group <- 501.54
+sumsq.res <- 267382
+alpha <- 0.0682
+
+# Find Degree of Freedom
+df.group <- groups-1
+df.res <- samplesize - groups
+df.total <- df.group + df.res
+
+# Find Sum of Squared
+
+sumsq.group <- df.group * meansq.group
+sumsq.total <- sumsq.group + sumsq.res
+
+# Find Mean Square
+mean.square <- sumsq.res / df.res
+
+
+# Find F-value
+f.stat <- meansq.group / mean.square
+
+print(paste("Degree of freedom for groups = ", df.group))
+print(paste("Degree of freedom for residual = ", df.res))
+print(paste("Degree of freedom for total = ", df.total))
+print(paste("Sum of squared for groups = ", sumsq.group))
+print(paste("Sum of squared for total = ", sumsq.total))
+print(paste("Mean Square residual = ", mean.square))
+print(paste("F Value = ", f.stat))
+```
+
+5. > 5.48 (D) What is the conclusion of the test
+
+Answer - With 95% confidence interval, level of significance, alpha=0.05. Since p value=0.0682 > alpha, we fail to reject null hypothesis. We need to accept null hypothesis and assume that mean for each groups are equal
+
