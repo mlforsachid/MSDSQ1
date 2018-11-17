@@ -217,6 +217,16 @@ and/or a confidence interval. Answer your question using the `inference`
 function, report the statistical results, and also provide an explanation in 
 plain language.
 
+Question - Check if there is difference in the mean avg visits by young mothers and mature mothers
+
+
+```{r inf-visits, eval=TRUE, tidy=FALSE}
+inference(y = nc$visits, x = nc$mature, est = "mean", type = "ht", null = 0, 
+          alternative = "twosided", method = "theoretical")
+```
+
+Answer : From the Z statistics and p-value we can conclude that there is no difference in the mean visits to the hospital by younger mom and matuare mom. We can conclude that both mature mom and younger mom visits hospital with same frequency during their pregnancy
+
 <div id="license">
 This is a product of OpenIntro that is released under a [Creative Commons 
 Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0).
