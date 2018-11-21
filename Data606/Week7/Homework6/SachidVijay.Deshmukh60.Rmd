@@ -1,0 +1,82 @@
+---
+title: 'Data 606: Chapter-6 Homework'
+output:
+  pdf_document: default
+  html_document:
+    css: ./lab.css
+    highlight: pygments
+    theme: cerulean
+---
+
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 11/20/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week6/Homework5/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week6/Homework5/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data606Homework5)
+
+##---------------------------------------------------------------------------
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1.  > 6.6 2010 Healthcare Law.
+
+* False. Point estimate is 46% so we are certain that 46% Americans in the sample support the decision
+* True. 95% confidence interval ranges between 43% adn 49%. This is inferred from sample
+* True. We can expect 95% sample to be in interval 43% to 49%
+* False. Since confidence interval is reduced, margin of error will be reduced as well
+
+2. > 6.28 Sleep deprivation, CA vs. OR, Part I.
+
+```{r propdff}
+prop.1 = 0.08
+prop.2 = 0.088
+prop.diff = prop.2 - prop.1
+
+sample1<-11545
+sample2 <-4691
+std.err<- sqrt(prop.1*(1-prop.1)/sample1 + prop.2*(1-prop.2)/sample2)
+
+# We know that critical value for 95% confidence interval = 1.96
+crit.value = 1.96
+
+print(paste("95% confidence interval of difference in proportion = ",  prop.diff + crit.value * std.err, "to", prop.diff - crit.value * std.err))
+```
+
+3. > 6.44 Barking deer.
+
+** (a)  Write the hypotheses for testing if barking deer prefer to forage in certain habitats over others.**
+
+* Null Hypothesis : Barking deer forage is agnostic of their habitate
+* Alternate Hypothesis : Barking deer forage is dependent of their habitate
+
+** (b) What type of test can we use to answer this research question?**
+Answer : We can use Chi Square test of independence to answer this research question
+
+** (c) Check if the assumptions and conditions required for this test are satisfied. **
+Answer : We need to assume that deers are radomly selected and selection is independent of each other. We need atleast 10 positive and 10 negative samples in each category. However in the case of wood there are only 4 positive samples. This would not give us accurate estimation of the chi square statistic
+
+```{r chi square}
+pwoods<-0.048
+pcult<-0.147
+pforest<-0.396
+pother<-1-pwoods-pcult-pforest
+df<-data.frame("Woods"=c(4,0.048),"Cultivated_grassplot"=c(16,0.147),"Deciduous_forests"=c(67,0.396),"Other"=c(345,1-0.048-0.147-0.396),"Total"=c(426,1))
+#we calculate the expected values from each group
+df<-rbind(df,c(df$Total[1]*df$Woods[2],df$Total[1]*df$Cultivated_grassplot[2],df$Total[1]*df$Deciduous_forests[2],df$Total[1]*df$Other[2],df$Total[1]))
+df
+
+obs<-c(df$Woods[1],df$Cultivated_grassplot[1],df$Deciduous_forests[1],df$Other[1])
+expt<-c(df$Woods[3],df$Cultivated_grassplot[3],df$Deciduous_forests[3],df$Other[3])
+z<-(obs-expt)/sqrt(expt)
+z
+
+chi<-sum(z^2)
+chi
+
+df<-length(obs)-1
+p<-1-pchisq(chi,df=df)
+p
+```
