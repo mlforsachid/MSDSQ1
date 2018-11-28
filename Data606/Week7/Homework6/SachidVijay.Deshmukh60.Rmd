@@ -47,15 +47,17 @@ print(paste("95% confidence interval of difference in proportion = ",  prop.diff
 
 3. > 6.44 Barking deer.
 
-** (a)  Write the hypotheses for testing if barking deer prefer to forage in certain habitats over others.**
+**(a)  Write the hypotheses for testing if barking deer prefer to forage in certain habitats over others.**
 
 * Null Hypothesis : Barking deer forage is agnostic of their habitate
 * Alternate Hypothesis : Barking deer forage is dependent of their habitate
 
-** (b) What type of test can we use to answer this research question?**
+**(b) What type of test can we use to answer this research question?**
+
 Answer : We can use Chi Square fitness of good test to answer this research question
 
-** (c) Check if the assumptions and conditions required for this test are satisfied. **
+**(c) Check if the assumptions and conditions required for this test are satisfied.**
+
 Answer : We need to assume that deers are radomly selected and selection is independent of each other. We need atleast 10 positive and 10 negative samples in each category. However in the case of wood there are only 4 positive samples. This would not give us accurate estimation of the chi square statistic
 
 ```{r chi square}
