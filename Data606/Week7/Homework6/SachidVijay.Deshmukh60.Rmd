@@ -10,10 +10,10 @@ output:
 
 ##---------------------------------------------------------------------------
 ###**Student Name :** Sachid Deshmukh
-###**Date :** 11/20/2018
+###**Date :** 11/27/2018
 * > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week6/Homework5/SachidVijay.Deshmukh60.Rmd)
 * > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week6/Homework5/SachidVijay.Deshmukh60.pdf)
-* > [RPubs location of published file](http://rpubs.com/sachid/Data606Homework5)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data606Homework6)
 
 ##---------------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 1.  > 6.6 2010 Healthcare Law.
 
 * False. Point estimate is 46% so we are certain that 46% Americans in the sample support the decision
-* True. 95% confidence interval ranges between 43% adn 49%. This is inferred from sample
+* True. 95% confidence interval ranges between 43% and 49%. This is inferred from sample
 * True. We can expect 95% sample to be in interval 43% to 49%
 * False. Since confidence interval is reduced, margin of error will be reduced as well
 
@@ -53,7 +53,7 @@ print(paste("95% confidence interval of difference in proportion = ",  prop.diff
 * Alternate Hypothesis : Barking deer forage is dependent of their habitate
 
 ** (b) What type of test can we use to answer this research question?**
-Answer : We can use Chi Square test of independence to answer this research question
+Answer : We can use Chi Square fitness of good test to answer this research question
 
 ** (c) Check if the assumptions and conditions required for this test are satisfied. **
 Answer : We need to assume that deers are radomly selected and selection is independent of each other. We need atleast 10 positive and 10 negative samples in each category. However in the case of wood there are only 4 positive samples. This would not give us accurate estimation of the chi square statistic
@@ -63,20 +63,14 @@ pwoods<-0.048
 pcult<-0.147
 pforest<-0.396
 pother<-1-pwoods-pcult-pforest
-df<-data.frame("Woods"=c(4,0.048),"Cultivated_grassplot"=c(16,0.147),"Deciduous_forests"=c(67,0.396),"Other"=c(345,1-0.048-0.147-0.396),"Total"=c(426,1))
-#we calculate the expected values from each group
-df<-rbind(df,c(df$Total[1]*df$Woods[2],df$Total[1]*df$Cultivated_grassplot[2],df$Total[1]*df$Deciduous_forests[2],df$Total[1]*df$Other[2],df$Total[1]))
-df
 
-obs<-c(df$Woods[1],df$Cultivated_grassplot[1],df$Deciduous_forests[1],df$Other[1])
-expt<-c(df$Woods[3],df$Cultivated_grassplot[3],df$Deciduous_forests[3],df$Other[3])
-z<-(obs-expt)/sqrt(expt)
-z
+owoods = 4
+ocult = 16
+oforest = 67
+oother = 345
 
-chi<-sum(z^2)
-chi
-
-df<-length(obs)-1
-p<-1-pchisq(chi,df=df)
-p
+# Perform Chi-Square fitness of good test
+chisq.test(x=c(owoods, ocult, oforest, oother), p=c(pwoods, pcult, pforest,pother))
 ```
+
+From the Chi-Square test above we can see that Chi Square value is very large (272.69) and P value is almost 0. Since P value is lesser that level of significance (0.05) we need to reject null hypotheis. The above Chi Square test results suggest that barking deer forage is not agnostic to their habitate. There is a significant relation between barking deer forage habits and the corresponding habitate in which they live. 
