@@ -11,8 +11,8 @@ output:
 
 ###**Date :** 12/10/2018
 
-* > [GitHub Location for rmd file](https://github.com/mlforsachid/Data607-Project3/blob/master/Misc/Data607Project3.rmd)
-* > [GitHub Location for pdf file](https://github.com/mlforsachid/Data607-Project3/blob/master/Misc/Data607Project3.pdf)
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/FinalProject/SachidVijay.Deshmukh60.rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data607/FinalProject/SachidVijay.Deshmukh60.pdf)
 * > [RPubs location of published file](http://rpubs.com/sachid/Data607FinalProject)
 * > [Data File](https://media.githubusercontent.com/media/mlforsachid/Data607-Project3/master/Misc/globalterrorism.csv)
 
