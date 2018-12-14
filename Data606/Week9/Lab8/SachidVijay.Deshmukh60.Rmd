@@ -1,12 +1,22 @@
 ---
 title: "Multiple linear regression"
 output:
+  pdf_document: default
   html_document:
     css: ./lab.css
     highlight: pygments
     theme: cerulean
-  pdf_document: default
 ---
+
+##---------------------------------------------------------------------------
+###**Student Name :** Sachid Deshmukh
+###**Date :** 12/14/2018
+* > [GitHub Location for rmd file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week8/Lab7/SachidVijay.Deshmukh60.Rmd)
+* > [GitHub Location for pdf file](https://github.com/mlforsachid/MSDSQ1/blob/master/Data606/Week8/Lab7/SachidVijay.Deshmukh60.pdf)
+* > [RPubs location of published file](http://rpubs.com/sachid/Data606Lab8)
+
+##---------------------------------------------------------------------------
+
 
 ## Grading the professor
 
@@ -71,13 +81,30 @@ variable         | description
     differences in course evaluations. Given the study design, is it possible to
     answer this question as it is phrased? If not, rephrase the question.
 
+**Answer: This is an observational study. This observational study is conducted with multiple independent variables and cumulative impact of those variables on course evaluation (output variable), Due to this nature of the study it is not feasible to answer a very specific question whether beauty of the teacher alone leads to differences in the course evaluations. We can re-phrase the question as Which variables amogst those collected in observational study leads to differences in the course evaluations and by what magnitude**
+
 2.  Describe the distribution of `score`. Is the distribution skewed? What does 
     that tell you about how students rate courses? Is this what you expected to 
     see? Why, or why not?
 
+```{r ScoreDist}
+boxplot(evals$score)
+hist(evals$score)
+```
+
+**Answer: We can see from the box plot and histogram above that students ratings are left skewed. 50% students rate teachers from 2.7 to 4.2 and another 50% students rate them from 4.2 to 5. This indicates that more students agree on higher ratings and student opinions differ a lot on lower ratings. The first 25% quartile is vary tall, indicating more diverse opinion amongst students when it comes to lower ratings. Students tend to agree more with each other as rating goes higher. This is expected because most teachers are well qualified and are very experienced and they acquire the specific teaching style which makes them popular amognst students. However there are some new teachers who are still trying to figure out optimum teaching technique and may receive less ratings from students. Since portion of new teachers is comparably lower than experenced teachers there are few observations with lower satisfaction ratings from students**
+
 3.  Excluding `score`, select two other variables and describe their relationship 
     using an appropriate visualization (scatterplot, side-by-side boxplots, or 
     mosaic plot).
+    
+```{r scatterplot1}
+fit = lm(evals$cls_students~evals$cls_did_eval)
+plot(evals$cls_students~evals$cls_did_eval, xlab="Total Students", ylab="Students Completed Evaluation", main="Total Students vs Students completed evaluation")
+abline(coefficients(fit), lty=2, col="blue")
+```
+
+**Answer: The above scatter plot shows relationship between Total Students and Students who completed evaluation. From the scatter plot it can be seen that higher students particiapate in teachers evaluation as class size increased. This shows that there is a positive correlation between Total Students and Students particiapted in evaluation**
 
 ## Simple linear regression
 
@@ -85,18 +112,27 @@ The fundamental phenomenon suggested by the study is that better looking teacher
 are evaluated more favorably. Let's create a scatterplot to see if this appears 
 to be the case:
 
-```{r scatter-score-bty_avg, eval = FALSE}
+```{r scatter-score-bty_avg}
 plot(evals$score ~ evals$bty_avg)
 ```
 
+**Answer: The above scatter plot is homoscadastic. This means there is no appearent relationship between avg beauty level and teachers grading. From the above scatter plot we can conclude that avg beauty level of a teacher have no impact on evaluation score**
 
 Before we draw conclusions about the trend, compare the number of observations 
 in the data frame with the approximate number of points on the scatterplot. 
 Is anything awry?
 
+**Answer: The points on scatter plots are way lesser than actual points in data frame. This suggests that points are overlapped**
+
 4.  Replot the scatterplot, but this time use the function `jitter()` on the
     $y$- or the $x$-coordinate. (Use `?jitter` to learn more.) What was
     misleading about the initial scatterplot?
+
+```{r scatter-jitter}
+plot(jitter(evals$score) ~ evals$bty_avg)
+```
+
+**Answer : Initial scatter plot was not able to differentiate overlapping of observations. That is misleading since each point have equal weight. We can't see that more variables are concentrated around certain beauty avg level which changes our conclusion**
 
 5.  Let's see if the apparent trend in the plot is something more than
     natural variation. Fit a linear model called `m_bty` to predict average
@@ -105,9 +141,27 @@ Is anything awry?
     interpret the slope. Is average beauty score a statistically significant
     predictor? Does it appear to be a practically significant predictor?
 
+```{r scatterplot2}
+m_bty = lm(evals$score~evals$bty_avg)
+plot(evals$score~evals$bty_avg, xlab="Score", ylab="Beauty Avg", main="Score vs Beauty Avg")
+abline(coefficients(m_bty), lty=2, col="blue")
+
+summary(m_bty)
+```
+
+**Answer: From the summary of the fitted model we can see that coefficient of beauty average is positive (0.06664) and p value is close to 0 making it statistically significant. We can conclude that  beauty average impacts the teachers score positively and each one unit increase in beauty average increases overal teacher rating by 0.06. The equation of the linear model can be written as score = 3.88 + 0.06664 * Avg Beauty**
+
+**Even though avg beauty is a statistically significant predictor for practical purposes it just improves the teacher score by 0.06 for each one point increase in avg beauty level. This is not a lot and for practical purpose we can ignore this impact**
+
 6.  Use residual plots to evaluate whether the conditions of least squares
     regression are reasonable. Provide plots and comments for each one (see
     the Simple Regression Lab for a reminder of how to make these).
+
+```{r residual}
+plot(m_bty$residuals)
+```
+
+**Answer : For linear regression we assume that residuals are nearly normally distributed and those are homoscadastic. Homoscadastic means there is no appearent pattern in the residual plot. From the above plot we can see that plot is y axis imbalance and errors are increasing as beauty avg value increases. Y axis imbalance tells us that we are predicting consistently lower value comapared to actual value. Residual for most of the points are negative. There is increasing pattern for high errors as avg beauty value increases. This means that we need transformation on the feature variables to make it more normally distributed**
 
 ## Multiple linear regression
 
@@ -117,7 +171,7 @@ physical appearance of the professors and the average of these six scores. Let's
 take a look at the relationship between one of these scores and the average 
 beauty score.
 
-```{r bty-rel, eval = FALSE}
+```{r bty-rel}
 plot(evals$bty_avg ~ evals$bty_f1lower)
 cor(evals$bty_avg, evals$bty_f1lower)
 ```
@@ -127,7 +181,7 @@ calculated using the individual scores. We can actually take a look at the
 relationships between all beauty variables (columns 13 through 19) using the 
 following command:
 
-```{r bty-rels, eval = FALSE}
+```{r bty-rels}
 plot(evals[,13:19])
 ```
 
@@ -149,8 +203,18 @@ summary(m_bty_gen)
     conditions for the regression are reasonable. Verify that the conditions
     for this model are reasonable using diagnostic plots.
 
+```{r diagplots}
+m_bty_gen <- lm(score ~ bty_avg + gender, data = evals)
+plot(m_bty_gen$residuals)
+qqnorm(m_bty_gen$residuals)
+```
+
+**Answer: From the diagnostic plot we can see that two important conditions for linear regression are not satsfied. The residuals are not homoscadastic. There is pattern where residuals increases on x axis. From the probability density plot we can see that residuals are not nearly normally distributed. We can't trust the p values here since conditions for normal distribution are not met**
+
 8.  Is `bty_avg` still a significant predictor of `score`? Has the addition
     of `gender` to the model changed the parameter estimate for `bty_avg`?
+
+**Answer: From the fitted model summary we can say the avg beauty is still a significant predictor of the score (P value is statistically significant). Addition of the gender to the model has changed the coefficient value of beauty avg parameter**
 
 Note that the estimate for `gender` is now called `gendermale`. You'll see this 
 name change whenever you introduce a categorical variable. The reason is that R 
@@ -171,7 +235,7 @@ the intercept and slope form familiar from simple regression.
 We can plot this line and the line corresponding to males with the following 
 custom function.
 
-```{r twoLines, eval = FALSE}
+```{r twoLines}
 multiLines(m_bty_gen)
 ```
 
@@ -179,6 +243,8 @@ multiLines(m_bty_gen)
     males, the parameter estimate is multiplied by 1.) For two professors
     who received the same beauty rating, which gender tends to have the
     higher course evaluation score?
+
+**Answer: The linear model equation for males can be written as score = 3.74 + (0.07 * beauty avg) + (0.17 * 1) From this equation we can see that for the same avg beauty, male gender receives 0.17 more avg score compared to female gender**
 
 The decision to call the indicator variable `gendermale` instead of`genderfemale`
 has no deeper meaning. R simply codes the category that comes first 
@@ -190,6 +256,21 @@ Use `?relevel` to learn more.)
     added in. How does R appear to handle categorical variables that have more 
     than two levels? Note that the rank variable has three levels: `teaching`, 
     `tenure track`, `tenured`.
+
+```{r LM_Rank}
+m_bty_rank <- lm(score ~ bty_avg + rank, data = evals)
+summary(m_bty_rank)
+```
+
+**Answer: R uses one hot encoding for handling categorical variable. From the regression coefficient we can see that R has automatically added rank tenuretrak and rank tenured variables to the regression equation. rank teaching is excluded since it can be represented as 0 coefficient. We can interpret the above result as follows**
+
+** 1] If teacher is ranked teaching then each increase in avg beauty of the teacher results in 0.06783 increase in avg score**
+
+** 2] If teacher is ranked tenure track then each increase in avg beauty of the teacher results in 0.06783 - 0.160 = -0.0921 increase in avg score **
+
+** 3] If teacher is ranked tenure then each increase in avg beauty of the teacher results in 0.06783 - 0.12623 = -0.0584 increase in avg score **
+
+**We can conclude that teaching teacher are awarded more for their beauty average followed by tenured teachers and then followed by tenure track teachers**
 
 The interpretation of the coefficients in multiple regression is slightly 
 different from that of simple regression. The estimate for `bty_avg` reflects
@@ -209,10 +290,12 @@ picture color.
 11. Which variable would you expect to have the highest p-value in this model? 
     Why? *Hint:* Think about which variable would you expect to not have any 
     association with the professor score.
+    
+**Answer: I expect following variables to hace highest p value in this model : - ethnicity, gender, language, age, students proportions, class size ,average beauty rating, outfit and picture color. These I think teachers score are the true reflection of teachers effectiveness and variables mentioned above don't influence teacher's effectiveness**
 
 Let's run the model...
 
-```{r m_full, eval = FALSE, tidy = FALSE}
+```{r m_full}
 m_full <- lm(score ~ rank + ethnicity + gender + language + age + cls_perc_eval 
              + cls_students + cls_level + cls_profs + cls_credits + bty_avg 
              + pic_outfit + pic_color, data = evals)
@@ -222,7 +305,11 @@ summary(m_full)
 12. Check your suspicions from the previous exercise. Include the model output
     in your response.
 
+**Answer : From the actual model output the variables which are not significant are rank tenure track, rank tenured, ethnicity, class student, class level upper, class prof single, picture outfit not formal. Most of the variables are aligned to my conclusion in quaestion-11 above. I am surprised to see that color picture variable is significant and male gender makes a difference on teachers ratings**
+
 13. Interpret the coefficient associated with the ethnicity variable.
+
+**Answer: The ethnicity variable has p value of 0.11698 which is greater than critical value 0.05 making it statistically insignificant. From this we can conclude that ethnicity is not statistically important for predicting avg teachers rating and can be removed from the model**
 
 14. Drop the variable with the highest p-value and re-fit the model. Did the
     coefficients and significance of the other explanatory variables change?
@@ -231,26 +318,56 @@ summary(m_full)
     the model.) If not, what does this say about whether or not the dropped
     variable was collinear with the other explanatory variables?
 
+```{r m_imp}
+m_imp <- lm(score ~ gender + language + age + cls_perc_eval 
+             + cls_credits + bty_avg 
+             +  pic_color, data = evals)
+summary(m_imp)
+```
+
+**Answer: We can see that once we fit the model with only keeping important variables there is a change in both significance level and value of coefficient of the input feature variables. Since removing un-important variables results in change of both significance level and value of coefficients we can conclude that removed variables were correlated to one or more important variables**
+
 15. Using backward-selection and p-value as the selection criterion,
     determine the best model. You do not need to show all steps in your
     answer, just the output for the final model. Also, write out the linear
     model for predicting score based on the final model you settle on.
+    
+```{r m_bktest}
+m_bktest <- lm(score ~ gender + cls_perc_eval + cls_credits +  pic_color, data = evals)
+summary(m_bktest)
+```
+
+**Answer: Based on final model we can write below equation for linear model Avg Rating = 3.869 + (0.173 * Gender Male) + (0.0050 * cls_perc_eval) + (0.431 * cls_creditsone credit) - (0.238 * pic_colorcolor)**
 
 16. Verify that the conditions for this model are reasonable using diagnostic 
     plots.
+
+```{r best_diag}
+m_bktest <- lm(score ~ gender + cls_perc_eval + cls_credits +  pic_color, data = evals)
+plot(m_bktest$residuals)
+qqnorm(m_bktest$residuals)
+```
+
+**Answer : From the residual plot we can dee that the conditions for Linear model like residuals being homoscadastic and nearly normally distributed are not truely satisfied here**
 
 17. The original paper describes how these data were gathered by taking a
     sample of professors from the University of Texas at Austin and including 
     all courses that they have taught. Considering that each row represents a 
     course, could this new information have an impact on any of the conditions 
     of linear regression?
+    
+**Answer : Since the sample represents only one location, it is same as adding a constant value to the model input. This will not be very useful information for the model to predict the avg teachers score and will not make any difference**
 
 18. Based on your final model, describe the characteristics of a professor and 
     course at University of Texas at Austin that would be associated with a high
     evaluation score.
+    
+**Answer : Based on the final model we can see that variables which are statistically important are gender, class percentage filling evaluation, class credit and color picture. Based on these parameters we can say the a male prefessor teaching for a larger class size with one credit course (lab, PE, etc.) and having black and white picture on the profile would be associated with high avg score**
 
 19. Would you be comfortable generalizing your conclusions to apply to professors
     generally (at any university)? Why or why not?
+    
+**Based on this study, I wouldn't be comfortable to ganearalize these results to any university. Sample just represents very specific university (University of Texas in Austin). Sample is not randomized and doesn't represent overall population of the students and teachers from nationwide universities. This can be very biased sample and could reveal a trend of a very specific university targetted in this observational study. However to generalize the results we need to make our sampling strategy more comprehensive and unbiased. Observation collected should be randomized and should be true representation of the overall population for us to generalize the results. From the model output we can see that the conditions for linear model are not fully satisfied in the result. We don't have a very strong conclusion whether identified important variables are truely doing good job in predicting the outcome variable. That is also one of the factor contributing towards not generalizing the result of this observational study**
 
 <div id="license">
 This is a product of OpenIntro that is released under a [Creative Commons Attribution-ShareAlike 3.0 Unported](http://creativecommons.org/licenses/by-sa/3.0). This lab was written by 
